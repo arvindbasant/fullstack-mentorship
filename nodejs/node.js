@@ -22,3 +22,26 @@
 
 // express -> REST API
 
+
+// const express = {
+//     use: () => { },
+//     get: () => {},
+// }
+
+// function express() {
+//     return {
+//         use: function (middleware) { },
+//         get: function (path, fn) {
+//             fn('req', 'res');
+//         }
+//     }
+// }
+
+// const app = express();
+// app.use(cookieParser);
+// app.get('/help', function (req, res) {
+//     // access cookie here
+//     // api related stuffs
+// });
+
+

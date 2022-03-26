@@ -102,7 +102,24 @@ let c = 5;
 
 
 
+// let arr = [];
+// arr = [1, 2, 'three', { item: 'four', name: 'arvind' }, { isnumberArray: false }, function(){}];
+// console.log(arr[0], arr[3]);
 
+// if (typeof arr[3] === 'object') {
+//     if (arr[3].hasOwnProperty('name')) {
+//         const myName = arr[3].name;
+//     }
+// }
+
+// push, pop, shift, unshift
+// arr.push(10);
+// arr.pop();
+
+// arr.unshift('Zero');
+// arr.shift();
+
+// arr[2] = 3;
 
 
 
