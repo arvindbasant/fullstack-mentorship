@@ -14,7 +14,16 @@ function mycookieParser(req) {
     c.ssid
 }
 
-app.get("path",(req, res) => { res.send("hello") });
+app.get("path", (req, res) => { res.send("hello") });
+
+app.get("/students/:studentId", (req, res) => {
+    const studentId = req.params.studentId; // 101
+
+    // based on student pull data from database -> {id: 101, name: 'arvind'}
+    const data = {id: 101, name: 'arvind'}
+
+    res.send(data);
+});
 
 app.listen(port, () => console.log("server started"));
 

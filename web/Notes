@@ -1,0 +1,73 @@
+Web Application
+
+Client -> runs in the user browser -> lang -> javascript
+
+Server -> server code runs in the backend deployed server like nodejs, java(tomcat), .net servers, docker
+
+
+Client Side
+    HTML -> browser native elements and tags -> <p>, <div>, <input /> etc. -> web page
+    Css -> used for styling the html
+    Javascript -> used for adding logics to html or interacting with server to get or post the data
+
+    Javascript -> Vanilla Javascript to create web application -> difficult to maintain
+        -> Javascript frameworks
+            -> more maintainable
+            -> you can create a re-usable component
+            -> React, Angular, Vue
+
+
+How client interacts with server?
+
+-> using HTTP protocol -> Hypertext Transfer Protocol
+    -> HTTP allows browser to make server request and exchange HTML and data(JSON, XML, Plain Text, buffer etc.)
+
+
+How a client makes a request to backend server?
+    -> through the APIs
+
+API Requests
+    -> GET
+    -> POST
+    -> PUT
+    -> DELETE
+
+GET -> returns data, api status code. 200 -> OK -> typically we might have to pass path params or query string
+
+http:example.com/students/:studentId
+    -> http:example.com/students/101
+    -> axios.get('http:example.com/students/101')...;
+    -> backend server will respose with student data is available
+    -> {data: {name: 'arvind', id: 101}, status: 200}
+
+
+POST -> it is used to send the data to the backend -> create a student record
+    -> http:example.com/students
+    -> axios.post('http:example.com/students', {name: 'lokesh'})...;
+    -> on successfull backend will respose with success message or new created user with status code
+
+
+
+Promise -> it is a function which response will resolve in future -> means it will take some time to give response
+
+
+function getstudents() {
+    axios
+    .get('http:example.com/students/101')
+    .then((res) => {
+        // perform the job related to api response
+        write logic to use api response
+
+    })
+    .catch(err => {});
+}
+
+function async getstudents() {
+    try {
+        const response = await axios.get('http:example.com/students/101');
+        return response;
+
+    } catch(err) {}
+}
+
+
