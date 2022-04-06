@@ -16,11 +16,12 @@
  *
  * apis
  * GET todos/user/:userId -> get all todos for logged in user
+ * GET todos/todo/todoId -> get one todo by todoId
  * POST todos -> create a new todo
- * PUT todos/todo/:todoId -> update a todo by todoId
+ * PUT todos -> update a todo by todoId
  * DELETE todos/todo/:todoId -> delete todo by todoId
  *
- * GET todos/todo/todoId -> get one todo by todoId
+ *
  */
 const TodoPage = () => {
   return <div>this is todo page</div>;
