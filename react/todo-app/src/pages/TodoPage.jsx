@@ -21,10 +21,53 @@
  * PUT todos -> update a todo by todoId
  * DELETE todos/todo/:todoId -> delete todo by todoId
  *
+ * Components
+ * Todo Card
+ * TODO creation form
+ * Dialog for creating a new TODO
+ * Header for Logged-in User Details and Create Button
+ *
  *
  */
+
+import TodoCard from "../components/TodoCard";
+
 const TodoPage = () => {
-  return <div>this is todo page</div>;
+  const todos = [
+    { id: 1, title: "one", status: "new" },
+    { id: 2, title: "two", status: "in progress" },
+    { id: 3, title: "three", status: "done" },
+  ];
+
+  return (
+    <div className="todo-page">
+      <div className="todo-header">
+        logged user details - create todo button
+      </div>
+      <div className="todo-list-container">
+        <div className="todo-new">
+          {todos &&
+            todos
+              .filter((todo) => todo.status === "new")
+              .map((todo) => <TodoCard todo={todo} />)}
+        </div>
+        <div className="todo-in-progress">
+          {todos
+            .filter((todo) => todo.status === "in progress")
+            .map((todo) => (
+              <TodoCard todo={todo} />
+            ))}
+        </div>
+        <div className="todo-done">
+          {todos
+            .filter((todo) => todo.status === "done")
+            .map((todo) => (
+              <TodoCard todo={todo} />
+            ))}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default TodoPage;
