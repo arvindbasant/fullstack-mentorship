@@ -1,0 +1,25 @@
+.todo-page {
+  height: 100vh;
+  margin: 24px 300px 0;
+}
+
+.todo-header {
+  height: 60px;
+}
+
+.todo-list-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 84px);
+}
+
+.todo-new,
+.todo-in-progress,
+.todo-done {
+  flex: 1;
+  border: 1px dotted black;
+  height: 100%;
+  margin: 12px;
+}

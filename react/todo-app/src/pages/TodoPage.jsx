@@ -30,42 +30,70 @@
  *
  */
 
+import { useEffect, useState } from "react";
+import { Button, Modal, ModalBody, ModalHeader } from "reactstrap";
 import TodoCard from "../components/TodoCard";
+import TodoForm from "../components/TodoForm";
+import { fetchTodoService } from "../services/todoService";
+import "./todoPage.css";
 
 const TodoPage = () => {
-  const todos = [
-    { id: 1, title: "one", status: "new" },
-    { id: 2, title: "two", status: "in progress" },
-    { id: 3, title: "three", status: "done" },
-  ];
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    async function fetchTodos() {
+      try {
+        // pass here logged in userId
+        const todos = await fetchTodoService("JD1001");
+        console.log(todos);
+        setTodos(todos);
+      } catch (error) {}
+    }
+    fetchTodos();
+  }, []);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+  const createNewTodo = () => {
+    setIsOpen(true);
+  };
 
   return (
     <div className="todo-page">
       <div className="todo-header">
-        logged user details - create todo button
+        <Button color="primary" onClick={createNewTodo}>
+          Create New Todo
+        </Button>
       </div>
       <div className="todo-list-container">
         <div className="todo-new">
           {todos &&
             todos
               .filter((todo) => todo.status === "new")
-              .map((todo) => <TodoCard todo={todo} />)}
+              .map((todo) => <TodoCard todo={todo} key={todo._id} />)}
         </div>
         <div className="todo-in-progress">
-          {todos
-            .filter((todo) => todo.status === "in progress")
-            .map((todo) => (
-              <TodoCard todo={todo} />
-            ))}
+          {todos &&
+            todos
+              .filter((todo) => todo.status === "in progress")
+              .map((todo) => <TodoCard todo={todo} key={todo._id} />)}
         </div>
         <div className="todo-done">
-          {todos
-            .filter((todo) => todo.status === "done")
-            .map((todo) => (
-              <TodoCard todo={todo} />
-            ))}
+          {todos &&
+            todos
+              .filter((todo) => todo.status === "done")
+              .map((todo) => <TodoCard todo={todo} key={todo._id} />)}
         </div>
       </div>
+      <Modal isOpen={isOpen} toggle={toggleModal}>
+        <ModalHeader>Create New Todo</ModalHeader>
+        <ModalBody>
+          <TodoForm />
+        </ModalBody>
+      </Modal>
     </div>
   );
 };
